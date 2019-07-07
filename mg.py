@@ -26,7 +26,6 @@ class Labyrinthe:
 
 
 
-
 #un test avec numpy pour afficher une grille de 0 qui fonctionne
 a = np.array([[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0]])
 print(a)
