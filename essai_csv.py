@@ -1,11 +1,10 @@
-import csv
+#affichage de la carte dans le terminal
 
 
-file = open(r'C:/Users/rbent/Desktop/git_repository/projet3_DA_Python/structure.csv')
 
-try:
-    reader = csv.reader(file)
-    for row in reader:
-        print(row)
-finally:
-    file.close()
+with open("carte_1.txt", "r") as f:
+    contenu = f.read()
+    print(contenu)
+
+
+#C:/Users/Bente/OneDrive/Bureau/OCR/DEV/OCR FORMATION DEVELOPPEUR PYTHON/GIT/projet3_DA_Python
