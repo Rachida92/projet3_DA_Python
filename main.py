@@ -1,3 +1,3 @@
-from mg import Labyrinthe
+from constantes import Labyrinthe
 
 level1 = Labyrinthe("carte_1.txt")
