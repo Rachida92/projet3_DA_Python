@@ -11,24 +11,25 @@ class MacGyver:
     def move(self,direction):  
         
         if direction == "s":
-            if self.labyrinthe.laby[self.x][self.y+1] == "m":
-                self.position = (self.y+1,self.x)
-                self.labyrinthe.laby[self.position[0]][self.position[1]] = "M"
+            
+            self.position = (self.y+1,self.x)
+            self.labyrinthe.laby[self.position[0]][self.position[1]] = "M"
+            
         
         if direction == "z":
-            if self.labyrinthe.laby[self.x][self.y-1] == "m":
-                self.position = (self.y-1,self.x)
-                self.labyrinthe.laby[self.position[0]][self.position[1]] = "M"
+            
+            self.position = (self.y-1,self.x)
+            self.labyrinthe.laby[self.position[0]][self.position[1]] = "M"
         
         if direction == "q":
-            if self.labyrinthe.laby[self.x-1][self.y] == "m":
-                self.position = (self.y,self.x-1)
-                self.labyrinthe.laby[self.position[0]][self.position[1]] = "M"
+            
+            self.position = (self.y,self.x-1)
+            self.labyrinthe.laby[self.position[0]][self.position[1]] = "M"
         
         if direction == "d":
-            if self.labyrinthe.laby[self.x+1][self.y] == "m":
-                self.position = (self.y,self.x+1)
-                self.labyrinthe.laby[self.position[0]][self.position[1]] = "M"
+            
+            self.position = (self.y,self.x+1)
+            self.labyrinthe.laby[self.position[0]][self.position[1]] = "M"
         
 
 
