@@ -4,38 +4,59 @@ class MacGyver:
         self.x = 0
         self.y = 0
         
-        self.position = (self.y,self.x)
+        
         self.labyrinthe = labyrinthe
-        self.labyrinthe.laby[self.position[0]][self.position[1]] = "M"
+        self.labyrinthe.laby[self.y][self.x] = "M"
+
+    #def check_collision(self,x,y):
+    #    if self.y+1 == "m":                  
+        
+    #    if self.x+1 == "m":
+            
+            
+
+            
+        # vérifier si le futur x est un mur.
+
 
     def move(self,direction):  
+                
         
+        
+
         if direction == "s":
-            
-            self.position = (self.y+1,self.x)
-            self.labyrinthe.laby[self.position[0]][self.position[1]] = "M"
-            
+            if self.labyrinthe.laby[self.y+1][self.x] != "m":
+                self.y += 1
+                self.labyrinthe.laby[self.y][self.x] = "M"
+                self.labyrinthe.laby[self.y-1][self.x] = "0"
+
+            #voir pour remplacer previous y par un 0 ici.
+ 
+        elif direction == "z":            
+            if self.labyrinthe.laby[self.y-1][self.x] != "m":
+                self.y -= 1
+                self.labyrinthe.laby[self.y][self.x] = "M"
+                self.labyrinthe.laby[self.y+1][self.x] = "0"
         
-        if direction == "z":
-            
-            self.position = (self.y-1,self.x)
-            self.labyrinthe.laby[self.position[0]][self.position[1]] = "M"
+        elif direction == "q":            
+            if self.labyrinthe.laby[self.y][self.x-1] != "m":
+                self.x -= 1
+                self.labyrinthe.laby[self.y][self.x] = "M"
+                self.labyrinthe.laby[self.y][self.x+1] = "0"
         
-        if direction == "q":
-            
-            self.position = (self.y,self.x-1)
-            self.labyrinthe.laby[self.position[0]][self.position[1]] = "M"
+        elif direction == "d": 
+                      
+            if self.labyrinthe.laby[self.y][self.x+1] != "m":
+                self.x += 1
+                self.labyrinthe.laby[self.y][self.x] = "M"
+                self.labyrinthe.laby[self.y][self.x-1] = "0"
+
+    
         
-        if direction == "d":
-            
-            self.position = (self.y,self.x+1)
-            self.labyrinthe.laby[self.position[0]][self.position[1]] = "M"
         
 
 
 
-
-#création du labyrithe qui ouvre et lit un fichier csv qui affiche les 15 lignes et colonnes du fichier
 
 class Labyrinthe:
     def __init__(self, textfile):

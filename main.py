@@ -10,14 +10,11 @@ while continuer:
     level1.display_laby()
     direction = input()
     if direction == "z": #haut
-        MG.position =  MG.move(direction)
+        MG.move(direction)
     elif direction == "s": #bas
-        MG.position =  MG.move(direction)
+        MG.move(direction)
     elif direction == "q": #gauche
-        MG.position =  MG.move(direction)
+        MG.move(direction)
     elif direction == "d": #droite
-        MG.position =  MG.move(direction)
+        MG.move(direction)
 
-    if MG.position == 'a':
-        print("Gagné !")
-        continuer = 0
