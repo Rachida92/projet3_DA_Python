@@ -4,8 +4,9 @@ level1 = Labyrinthe("carte_1.txt")
 MG = MacGyver(level1)
 
 
-continuer = 1
-while continuer:
+
+while level1.continuer:
+    print(level1.continuer)
     #boucle de jeu
     level1.display_laby()
     direction = input()
@@ -17,4 +18,7 @@ while continuer:
         MG.move(direction)
     elif direction == "d": #droite
         MG.move(direction)
+
+
+
 

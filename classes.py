@@ -1,3 +1,5 @@
+import random
+
 #definition de la classe Personnage pour créer MG et le méchant
 class MacGyver:
     def __init__(self, labyrinthe):
@@ -7,16 +9,19 @@ class MacGyver:
         
         self.labyrinthe = labyrinthe
         self.labyrinthe.laby[self.y][self.x] = "M"
+        self.objets = []
 
-    #def check_collision(self,x,y):
-    #    if self.y+1 == "m":                  
+    def check_collision(self,a,b):
+
+        if self.labyrinthe.laby[a][b] == "a":
+            self.labyrinthe.continuer = 0
+            print("vous avez gagné")
+            return True
+
+        if self.labyrinthe.laby[a][b] != "m":
+            return True
         
-    #    if self.x+1 == "m":
-            
-            
-
-            
-        # vérifier si le futur x est un mur.
+    
 
 
     def move(self,direction):  
@@ -25,31 +30,31 @@ class MacGyver:
         
 
         if direction == "s":
-            if self.labyrinthe.laby[self.y+1][self.x] != "m":
+            if self.check_collision(self.y+1,self.x):
                 self.y += 1
                 self.labyrinthe.laby[self.y][self.x] = "M"
-                self.labyrinthe.laby[self.y-1][self.x] = "0"
+                self.labyrinthe.laby[self.y-1][self.x] = " "
 
-            #voir pour remplacer previous y par un 0 ici.
+            #voir pour remplacer previous y par un   ici.
  
         elif direction == "z":            
-            if self.labyrinthe.laby[self.y-1][self.x] != "m":
+            if self.check_collision(self.y-1,self.x):
                 self.y -= 1
                 self.labyrinthe.laby[self.y][self.x] = "M"
-                self.labyrinthe.laby[self.y+1][self.x] = "0"
+                self.labyrinthe.laby[self.y+1][self.x] = " "
         
         elif direction == "q":            
-            if self.labyrinthe.laby[self.y][self.x-1] != "m":
+            if self.check_collision(self.y,self.x-1):
                 self.x -= 1
                 self.labyrinthe.laby[self.y][self.x] = "M"
-                self.labyrinthe.laby[self.y][self.x+1] = "0"
+                self.labyrinthe.laby[self.y][self.x+1] = " "
         
         elif direction == "d": 
                       
-            if self.labyrinthe.laby[self.y][self.x+1] != "m":
+            if self.check_collision(self.y,self.x+1):
                 self.x += 1
                 self.labyrinthe.laby[self.y][self.x] = "M"
-                self.labyrinthe.laby[self.y][self.x-1] = "0"
+                self.labyrinthe.laby[self.y][self.x-1] = " "
 
     
         
@@ -60,8 +65,12 @@ class MacGyver:
 
 class Labyrinthe:
     def __init__(self, textfile):
-
+        self.continuer = 1
         self.laby = []
+        self.a = 0
+        
+
+        
 
         with open(textfile, "r") as f:
             for contenu in f.readlines():
@@ -71,7 +80,10 @@ class Labyrinthe:
                     if element != "\n":
                         lines.append(element)                        
                 self.laby.append(lines)
+        # appeler place_object ici 
         
+        #self.place_object(self.a)
+    
 
     def display_laby(self):
         for line in self.laby:
@@ -80,7 +92,13 @@ class Labyrinthe:
                 labyline += element
             print(labyline)
 
-            
+#début d'essai de création de la méthode
+    #def place_object(self, objet1):
+        
+        #if self.labyrinthe.laby[randint(0,15)][randint(0,15)] == " ":
+        
+                
+           
 
             
 
