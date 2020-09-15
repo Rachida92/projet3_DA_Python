@@ -1,11 +1,10 @@
-import random
+from random import randint
 
 #definition de la classe Personnage pour créer MG et le méchant
 class MacGyver:
     def __init__(self, labyrinthe):
         self.x = 0
         self.y = 0
-        
         
         self.labyrinthe = labyrinthe
         self.labyrinthe.laby[self.y][self.x] = "M"
@@ -20,14 +19,8 @@ class MacGyver:
 
         if self.labyrinthe.laby[a][b] != "m":
             return True
-        
-    
-
 
     def move(self,direction):  
-                
-        
-        
 
         if direction == "s":
             if self.check_collision(self.y+1,self.x):
@@ -69,9 +62,6 @@ class Labyrinthe:
         self.laby = []
         self.a = 0
         
-
-        
-
         with open(textfile, "r") as f:
             for contenu in f.readlines():
                             
@@ -82,7 +72,7 @@ class Labyrinthe:
                 self.laby.append(lines)
         # appeler place_object ici 
         
-        #self.place_object(self.a)
+        self.place_object()
     
 
     def display_laby(self):
@@ -93,11 +83,23 @@ class Labyrinthe:
             print(labyline)
 
 #début d'essai de création de la méthode
-    #def place_object(self, objet1):
+    
+    def place_object(self):
+              
+        i = 3
         
-        #if self.labyrinthe.laby[randint(0,15)][randint(0,15)] == " ":
+
+        while i > 0:
+            a = randint(0,15)
+            b = randint(0,15)
+            
+            if MacGyver.check_collision(a,b):
+                #print(self.laby[a][b])
+                print(a,b)
+                i -= 1
+
+
         
-                
            
 
             
