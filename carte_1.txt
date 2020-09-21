@@ -4,9 +4,9 @@ d  mmmmm m  mmm
 m   mmmm   mmmm
    m     mmm  m
 mm mmmm mm   mm
-   mmm    mmmmm
+   mmm    mm mm
  m   mm m mm  m
- mm m   m   mmm
+ mm m   m    mm
 mmm  mmmm mmmmm
 mmm mm m  mm  m
 m   m  m mm  mm
