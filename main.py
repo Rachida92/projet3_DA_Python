@@ -1,4 +1,5 @@
-from classes import Labyrinthe, MacGyver
+from labyrinthe import Labyrinthe
+from macgyver import MacGyver
 import pygame
 
 level1 = Labyrinthe("carte_1.txt")
@@ -13,17 +14,17 @@ pygame.init()
 fenetre = pygame.display.set_mode((640, 480))
 
 pygame.display.flip()
-
+"""
 while level1.continuer:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             level1.continuer = False
             pygame.quit()
-"""
+
 
 while level1.continuer:
 
-    level1.display_laby()
+    #level1.display_laby()
     direction = input()
     if direction == "z":  # haut
         MG.move(direction)
