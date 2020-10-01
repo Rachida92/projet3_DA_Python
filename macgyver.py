@@ -1,4 +1,5 @@
 class MacGyver:
+
     def __init__(self, labyrinthe):
         self.x = 0
         self.y = 0
