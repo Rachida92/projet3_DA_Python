@@ -1,5 +1,3 @@
-from modules.labyrinthe import Labyrinth
-
 class MacGyver:
 
     def __init__(self, labyrinth):
@@ -15,7 +13,7 @@ class MacGyver:
             if len(self.MGobjects) < 3:
                 self.labyrinth.running = False
                 print("Vous avez perdu")
-                Labyrinth.running = False
+
 
             else:
                 self.labyrinth.running = False

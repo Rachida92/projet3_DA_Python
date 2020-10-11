@@ -1,4 +1,4 @@
-from random import randint
+import random
 
 
 class Labyrinth:
@@ -8,6 +8,8 @@ class Labyrinth:
         self.map = []
         self.coor = []
         self.objects = ["T", "A", "E"]
+        self.object_place = []
+        self.empty_space = []
 
         for x in range(15):
             for y in range(15):
@@ -22,25 +24,22 @@ class Labyrinth:
                         lines.append(item)
                 self.map.append(lines)
 
-    #        self.place_object()
+            for (x, y) in self.coor:
+                if self.map[x][y] == " ":
+                    self.empty_space.append((x, y))
 
-    #    def display_map(self):
+            i = 3
+            while i > 0:
+                self.object_place.append(random.choice(self.empty_space))
+                i -= 1
 
-    #        for line in self.map:
-    #            mapline = ""
-    #            for item in line:
-    #                mapline += item
-    #            print(mapline)
+            self.place_object()
 
-    # update place_object pour placer dans une liste de tuple vide que d'essayer de placer au pif
     def place_object(self):
 
         i = 3
-
         while i > 0:
-            a = randint(0, 14)
-            b = randint(0, 14)
 
-            if self.map[a][b] == " ":
-                self.map[a][b] = self.objects[i - 1]
+            for (x, y) in self.object_place:
+                self.map[x][y] = self.objects[i - 1]
                 i -= 1
