@@ -4,7 +4,7 @@ from modules.variables import *
 import pygame
 from pygame.locals import *
 
-level1 = Labyrinth("carte_1.txt")
+level1 = Labyrinth("maps/map_2.txt")
 MG = MacGyver(level1)
 
 pygame.init()
@@ -12,10 +12,11 @@ while level1.running:
 
     screen = pygame.display.set_mode((screen_size, screen_size))
 
-    mur = pygame.image.load("mur.png").convert()
+    mur = pygame.image.load("macgyver_ressources/mur.png").convert()
     mur_petit = pygame.transform.scale(mur, (sprite_size, sprite_size))
-    sol = pygame.image.load("sol.png").convert()
+    sol = pygame.image.load("macgyver_ressources/sol.png").convert()
     sol_petit = pygame.transform.scale(sol, (sprite_size, sprite_size))
+
     macgyver = pygame.image.load("macgyver_ressources/MacGyver.png").convert_alpha()
     macgyver_petit = pygame.transform.scale(macgyver, (sprite_size, sprite_size))
     guardian = pygame.image.load("macgyver_ressources/Gardien.png").convert_alpha()

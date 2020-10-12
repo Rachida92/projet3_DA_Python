@@ -13,15 +13,11 @@ class MacGyver:
             if len(self.MGobjects) < 3:
                 self.labyrinth.running = False
                 print("Vous avez perdu")
-
-
             else:
                 self.labyrinth.running = False
                 self.seringue = True
                 print("vous avez gagné")
-
                 return True
-
 
         if self.labyrinth.map[x][y] in self.labyrinth.objects:
             self.MGobjects.append(self.labyrinth.map[x][y])
@@ -29,6 +25,8 @@ class MacGyver:
 
         if self.labyrinth.map[x][y] != "m":
             return True
+
+
 
     def move(self, direction):
 
