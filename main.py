@@ -1,64 +1,78 @@
 from modules.labyrinthe import Labyrinth
 from modules.macgyver import MacGyver
-from modules.variables import *
+from modules.variables import sprite_size as ss, screen_size
 import pygame
-from pygame.locals import *
+from pygame.locals import KEYDOWN, K_UP, K_LEFT, K_DOWN, K_RIGHT
 
+# Loading map and MacGyver
 level1 = Labyrinth("maps/map_2.txt")
 MG = MacGyver(level1)
 
+# Pygame initialization and start loop game
 pygame.init()
 while level1.running:
 
+    # Game window created and size defined
     screen = pygame.display.set_mode((screen_size, screen_size))
 
+    # Loading and resizing all the images used
+    # First, loading floor and walls images
     mur = pygame.image.load("macgyver_ressources/mur.png").convert()
-    mur_petit = pygame.transform.scale(mur, (sprite_size, sprite_size))
+    mur_s = pygame.transform.scale(mur, (ss, ss))
     sol = pygame.image.load("macgyver_ressources/sol.png").convert()
-    sol_petit = pygame.transform.scale(sol, (sprite_size, sprite_size))
+    sol_s = pygame.transform.scale(sol, (ss, ss))
 
-    macgyver = pygame.image.load("macgyver_ressources/MacGyver.png").convert_alpha()
-    macgyver_petit = pygame.transform.scale(macgyver, (sprite_size, sprite_size))
-    guardian = pygame.image.load("macgyver_ressources/Gardien.png").convert_alpha()
-    guardian_petit = pygame.transform.scale(guardian, (sprite_size, sprite_size))
-    ether = pygame.image.load("macgyver_ressources/ether.png").convert_alpha()
-    ether_petit = pygame.transform.scale(ether, (sprite_size, sprite_size))
-    tube = pygame.image.load("macgyver_ressources/tube_plastique.png").convert_alpha()
-    tube_petit = pygame.transform.scale(tube, (sprite_size, sprite_size))
-    aiguille = pygame.image.load("macgyver_ressources/aiguille.png").convert_alpha()
-    aiguille_petit = pygame.transform.scale(aiguille, (sprite_size, sprite_size))
+    # Then, loading characters images and objects images
+    macgyver = pygame.image.load("macgyver_ressources/MacGyver.png").convert()
+    macgyver_s = pygame.transform.scale(macgyver, (ss, ss))
+    guardian = pygame.image.load("macgyver_ressources/Gardien.png").convert()
+    guardian_s = pygame.transform.scale(guardian, (ss, ss))
+    ether = pygame.image.load("macgyver_ressources/ether.png").convert()
+    ether_s = pygame.transform.scale(ether, (ss, ss))
+    tube = pygame.image.load("macgyver_ressources/tube.png").convert()
+    tube_s = pygame.transform.scale(tube, (ss, ss))
+    needle = pygame.image.load("macgyver_ressources/aiguille.png").convert()
+    needle_s = pygame.transform.scale(needle, (ss, ss))
 
-
+    images = {
+        'm': mur_s,
+        'M': macgyver_s,
+        'a': guardian_s,
+        'T': tube_s,
+        'A': needle_s,
+        'E': ether_s,
+        ' ': sol_s
+    }
+    # Applying all the images loaded to the correct location
 
     for (x, y) in level1.coor:
-        if level1.map[x][y] == 'm':
-            screen.blit(mur_petit, ((y * sprite_size, x * sprite_size), (sprite_size, sprite_size)))
-        elif level1.map[x][y] == 'M':
-            screen.blit(macgyver_petit, ((y * sprite_size, x * sprite_size), (sprite_size, sprite_size)))
-        elif level1.map[x][y] == 'a':
-            screen.blit(guardian_petit, ((y * sprite_size, x * sprite_size), (sprite_size, sprite_size)))
-        elif level1.map[x][y] == 'T':
-            screen.blit(tube_petit, ((y * sprite_size, x * sprite_size), (sprite_size, sprite_size)))
-        elif level1.map[x][y] == 'A':
-            screen.blit(aiguille_petit, ((y * sprite_size, x * sprite_size), (sprite_size, sprite_size)))
-        elif level1.map[x][y] == 'E':
-            screen.blit(ether_petit, ((y * sprite_size, x * sprite_size), (sprite_size, sprite_size)))
-        elif level1.map[x][y] == ' ':
-            screen.blit(sol_petit, ((y * sprite_size, x * sprite_size), (sprite_size, sprite_size)))
+        s = ss
+        finalSizeX = x * ss
+        finalSizeY = y * ss
+        if level1.map[x][y] in images.keys():
+            screen.blit(images[level1.map[x][y]],
+                        ((finalSizeY, finalSizeX),
+                         (s, s)))
 
+    # Game window refresh with all the images
     pygame.display.flip()
+
+    # Events configuration (key pressed and clic to close the game window)
+
+    # Close the window if user clic to close window
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             level1.running = False
 
+        # Direction of MacGyver configurations
+        events_direction = {
+            K_RIGHT: 'droite',
+            K_LEFT: 'gauche',
+            K_DOWN: 'bas',
+            K_UP: 'haut'
+        }
         if event.type == KEYDOWN:
-            if event.key == K_RIGHT:
-                MG.move('droite')
-            elif event.key == K_LEFT:
-                MG.move('gauche')
-            elif event.key == K_UP:
-                MG.move('haut')
-            elif event.key == K_DOWN:
-                MG.move('bas')
+            if event.key in events_direction.keys():
+                MG.move(events_direction[event.key])
 
 pygame.quit()
