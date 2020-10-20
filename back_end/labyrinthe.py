@@ -6,6 +6,9 @@ class Labyrinth:
 
     # Initialization with boolean for game loop, all the lists needed for the map
     def __init__(self, textfile):
+        """
+            This class create MG
+        """
         self.running = True
         self.map = []
         self.coor = []

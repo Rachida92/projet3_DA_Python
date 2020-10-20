@@ -2,11 +2,11 @@
 
 class MacGyver:
     """
-    This class create MG
+    This class create MacGyver object.
+    Initialization with the initial position of MG, map and list of objects.
     """
-
-    # Initialization with the initial position of MG, map and list of objects.
     def __init__(self, labyrinth):
+
         self.direction = {
             'haut': {'x': -1, 'y': 0},
             'bas': {'x': 1, 'y': 0},
@@ -20,7 +20,10 @@ class MacGyver:
         self.MGobjects = []
         self.seringue = False
 
-    # Function to check what is the next position chosen and what is the action according with
+    """
+    Function to check what is the next position chosen and what is the action according with
+    """
+
     def check_collision(self, x, y):
         # Case defining conditions to win or lose when MG is in the same location as guardian
         if self.labyrinth.map[x][y] == "a":
@@ -40,7 +43,10 @@ class MacGyver:
         if self.labyrinth.map[x][y] != "m":
             return True
 
-    # Function for moving MG
+    """
+    Function for moving MG
+    
+    """
     def move(self, movement):
 
         if movement in self.direction:

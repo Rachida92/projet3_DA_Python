@@ -1,6 +1,6 @@
-from modules.labyrinthe import Labyrinth
-from modules.macgyver import MacGyver
-from modules.variables import sprite_size as ss, screen_size
+from back_end.labyrinthe import Labyrinth
+from back_end.macgyver import MacGyver
+from back_end.variables import sprite_size as ss, screen_size
 import pygame
 from pygame.locals import KEYDOWN, K_UP, K_LEFT, K_DOWN, K_RIGHT
 
