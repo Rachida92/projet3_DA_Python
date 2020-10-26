@@ -1,9 +1,6 @@
-#!/venv/Include/site python3.8
-# coding:utf-8
-
-from back_end.labyrinthe import Labyrinth
-from back_end.macgyver import MacGyver
-from back_end.variables import sprite_size as ss, screen_size
+from back_end import Labyrinth
+from back_end import MacGyver
+from back_end import sprite_size as ss, screen_size
 import pygame
 from pygame.locals import KEYDOWN, K_UP, K_LEFT, K_DOWN, K_RIGHT
 

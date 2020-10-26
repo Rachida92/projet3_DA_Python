@@ -1,5 +1,3 @@
-#!/venv/Include/site python3.8
-# coding:utf-8
 from cx_Freeze import setup, Executable
 
 build_exe_options = {

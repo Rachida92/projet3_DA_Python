@@ -1,6 +1,3 @@
-#!/venv/Include/site python3.8
-# coding:utf-8
-
 # MacGyver class to create, place on the map and manage moves of the character
 
 class MacGyver:
@@ -28,6 +25,10 @@ class MacGyver:
     """
 
     def check_collision(self, x, y):
+
+        if x < 0 or y < 0 or x > 14 or y > 14:
+            return False
+
         # Case defining conditions to win or lose when MG is in the same location as guardian
         if self.labyrinth.map[x][y] == "a":
             if len(self.MGobjects) < 3:
