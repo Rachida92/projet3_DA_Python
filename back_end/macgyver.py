@@ -1,3 +1,6 @@
+#!/venv/Include/site python3.8
+# coding:utf-8
+
 # MacGyver class to create, place on the map and manage moves of the character
 
 class MacGyver:
@@ -35,16 +38,18 @@ class MacGyver:
                 self.seringue = True
                 print("vous avez gagné")
                 return True
+
         # Case defining action when MG is in the same location as an object
         if self.labyrinth.map[x][y] in self.labyrinth.objects:
             self.MGobjects.append(self.labyrinth.map[x][y])
             return True
+
         # Case to forbid to MG to go on wall locations
         if self.labyrinth.map[x][y] != "m":
             return True
 
     """
-    Function for moving MG
+    Function to moving MG
     
     """
     def move(self, movement):

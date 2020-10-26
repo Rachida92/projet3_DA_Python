@@ -1,3 +1,6 @@
+#!/venv/Include/site python3.8
+# coding:utf-8
+
 import random
 
 
@@ -11,15 +14,15 @@ class Labyrinth:
         """
         self.running = True
         self.map = []
-        self.coor = []
+        self.coordinates = []
         self.objects = ["T", "A", "E"]
         self.random_location = []
         self.empty_space = []
 
-        # Fill all the positions tuple possible in the list "coor"
+        # Fill all the positions tuple possible in the list "coordinates"
         for x in range(15):
             for y in range(15):
-                self.coor.append((x, y))
+                self.coordinates.append((x, y))
 
         # Open, read the textfile and fill it in the list "map"
         with open(textfile, "r") as f:
@@ -32,7 +35,7 @@ class Labyrinth:
                 self.map.append(lines)
 
             # Fill all the positions tuple containing empty space
-            for (x, y) in self.coor:
+            for (x, y) in self.coordinates:
                 if self.map[x][y] == " ":
                     self.empty_space.append((x, y))
 
