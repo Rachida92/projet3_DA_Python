@@ -1,10 +1,16 @@
-# MacGyver class to create, place on the map and manage moves of the character
+"""
+Module to create and manage moves of main character
+"""
 
 class MacGyver:
     """
-    This class create MacGyver object.
-    Initialization with the initial position of MG, map and list of objects.
+    This class create MacGyver.
+    - Initialization with the initial position of MG, map and list of objects
+    that MG should to get to win.
+    - Direction dictionnary to stock all the moves possible.
+    - Two variables (seringue and lose) to manage if player win or lose.
     """
+
     def __init__(self, labyrinth):
 
         self.direction = {
@@ -19,9 +25,11 @@ class MacGyver:
         self.labyrinth.map[self.x][self.y] = "M"
         self.MGobjects = []
         self.seringue = False
+        self.lose = False
 
     """
-    Function to check what is the next position chosen and what is the action according with
+    Function to check what is the next position chosen
+    and what is the action according with
     """
 
     def check_collision(self, x, y):
@@ -29,15 +37,15 @@ class MacGyver:
         if x < 0 or y < 0 or x > 14 or y > 14:
             return False
 
-        # Case defining conditions to win or lose when MG is in the same location as guardian
+        # Lose
         if self.labyrinth.map[x][y] == "a":
             if len(self.MGobjects) < 3:
                 self.labyrinth.running = False
-                print("Vous avez perdu")
+                self.lose = True
+            # Win
             else:
                 self.labyrinth.running = False
                 self.seringue = True
-                print("vous avez gagné")
                 return True
 
         # Case defining action when MG is in the same location as an object
@@ -51,13 +59,21 @@ class MacGyver:
 
     """
     Function to moving MG
-    
+    Check if the move is possible by :
+    - check_collision function
+    - direction
+    Replace previous position of MG by empty space
     """
+
     def move(self, movement):
 
-        if movement in self.direction:
-            if self.check_collision(self.x + self.direction[movement]['x'], self.y + self.direction[movement]['y']):
-                self.x = self.x + self.direction[movement]['x']
-                self.y = self.y + self.direction[movement]['y']
-                self.labyrinth.map[self.x][self.y] = "M"
-                self.labyrinth.map[self.x - self.direction[movement]['x']][self.y - self.direction[movement]['y']] = " "
+        if movement in self.direction and self.check_collision(
+                self.x + self.direction[movement]['x'],
+                self.y + self.direction[movement]['y']
+        ):
+            self.x = self.x + self.direction[movement]['x']
+            self.y = self.y + self.direction[movement]['y']
+            self.labyrinth.map[self.x][self.y] = "M"
+            self.labyrinth.map[
+                self.x - self.direction[movement]['x']
+            ][self.y - self.direction[movement]['y']] = " "

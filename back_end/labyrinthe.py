@@ -1,14 +1,25 @@
 import random
 
+"""
+Module to create labyrinth complete
+with objects to get
+"""
 
-# Labyrinth class to generate map with 3 random objects placed on.
+
 class Labyrinth:
+    """
+    Initialization :
+    - Creating labyrinth
+    from textfile and fill it in "map" list.
+    - "coordinates" list gets all the position tuples existing.
+    - "empty_space" list gets all the position tuples
+    corresponding with empty spaces.
+    - "random_location" list gets 3 random positions from "empty_space"
+    - "objects" list contains the 3 objects MG needs to get to win.
+    - "running" is used to stop the loop game.
+    """
 
-    # Initialization with boolean for game loop, all the lists needed for the map
     def __init__(self, textfile):
-        """
-            This class create MG
-        """
         self.running = True
         self.map = []
         self.coordinates = []
@@ -36,19 +47,23 @@ class Labyrinth:
                 if self.map[x][y] == " ":
                     self.empty_space.append((x, y))
 
-            # Call place_object function to place the 3 objects to random places
+            # Function below called to place 3 random objects
             self.place_object()
 
-    # Function to place 3 objects to random places
     def place_object(self):
+        """
+        Function to place 3 objects to random places.
+        It fill random_location from 3 random tuples from empty_space
+        and place 3 objects on the random tuples.
+        """
 
-        # Loop to choose 3 randoms tuples in the list "empty_space" and add them to the list "random_location"
+        # Loop to choose randomly 3 tuples from empty_space
         i = 3
         while i > 0:
             self.random_location.append(random.choice(self.empty_space))
             i -= 1
 
-        # Loop to place the 3 objects from the list "objects"
+        # Loop to place the 3 objects on tuples chosen above.
         i = 3
         while i > 0:
             for (x, y) in self.random_location:

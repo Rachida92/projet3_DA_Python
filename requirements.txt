@@ -5,13 +5,17 @@ bottle-websocket==0.2.9
 cffi==1.14.3
 cx-Freeze==6.3
 Eel==0.12.4
+flake8==3.8.4
 future==0.18.2
 gevent==20.9.0
 gevent-websocket==0.10.1
 greenlet==0.4.17
 importlib-metadata==2.0.0
+mccabe==0.6.1
 pefile==2019.4.18
+pycodestyle==2.6.0
 pycparser==2.20
+pyflakes==2.2.0
 pygame==1.9.6
 pyinstaller==4.0
 pyinstaller-hooks-contrib==2020.9
