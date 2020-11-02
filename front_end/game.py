@@ -111,7 +111,7 @@ class Game:
                 my_font = font.Font(font.get_default_font(), 20)
                 scr = display.set_mode((screen_size, screen_size))
                 scr.blit(my_font.render(
-                    "Vous avez perdu",
+                    "Vous avez perdu !",
                     1,
                     (255, 255, 255)),
                     (200, 250)
