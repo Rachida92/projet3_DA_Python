@@ -9,7 +9,7 @@ class MacGyver:
     - Initialization with the initial position of MG, map and list of objects
     that MG should to get to win.
     - Direction dictionary to stock all the moves possible.
-    - Two variables (seringue and lose) to manage if player win or lose.
+    - Two variables (syringe and lose) to manage if player win or lose.
     """
 
     def __init__(self, labyrinth):
