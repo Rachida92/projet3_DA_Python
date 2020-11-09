@@ -34,21 +34,21 @@ class Game:
 
             # Loading and resizing all the images used
             # First, loading floor and walls images
-            mur = pg.image.load("front_end/MG_img/mur.png").convert()
+            mur = pg.image.load("front_end/MG_img/wall.png").convert()
             mur_s = pg.transform.scale(mur, (ss, ss))
-            sol = pg.image.load("front_end/MG_img/sol.png").convert()
+            sol = pg.image.load("front_end/MG_img/floor.png").convert()
             sol_s = pg.transform.scale(sol, (ss, ss))
 
             # Then, loading characters images and objects images
             macgyver = pg.image.load("front_end/MG_img/MacGyver.png").convert()
             macgyver_s = pg.transform.scale(macgyver, (ss, ss))
-            guardian = pg.image.load("front_end/MG_img/Gardien.png").convert()
+            guardian = pg.image.load("front_end/MG_img/guardian.png").convert()
             guardian_s = pg.transform.scale(guardian, (ss, ss))
             ether = pg.image.load("front_end/MG_img/ether.png").convert()
             ether_s = pg.transform.scale(ether, (ss, ss))
             tube = pg.image.load("front_end/MG_img/tube.png").convert()
             tube_s = pg.transform.scale(tube, (ss, ss))
-            needle = pg.image.load("front_end/MG_img/aiguille.png").convert()
+            needle = pg.image.load("front_end/MG_img/needle.png").convert()
             needle_s = pg.transform.scale(needle, (ss, ss))
 
             images = {
@@ -75,7 +75,7 @@ class Game:
 
             # Events configuration
 
-            # Close the window if user clic to close window
+            # Close the window if user click to close window
             for event in pg.event.get():
                 if event.type == pg.QUIT:
                     level.running = False
