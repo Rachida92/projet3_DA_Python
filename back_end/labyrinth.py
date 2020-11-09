@@ -34,10 +34,10 @@ class Labyrinth:
 
         # Open, read the textfile and fill it in the list "map"
         with open(textfile, "r") as f:
-            for mapfile in f.readlines():
+            for map_file in f.readlines():
 
                 lines = []
-                for item in mapfile:
+                for item in map_file:
                     if item != "\n":
                         lines.append(item)
                 self.map.append(lines)

@@ -82,17 +82,17 @@ class Game:
 
                 # Direction of MacGyver configurations
                 events_direction = {
-                    K_RIGHT: 'droite',
-                    K_LEFT: 'gauche',
-                    K_DOWN: 'bas',
-                    K_UP: 'haut'
+                    K_RIGHT: 'right',
+                    K_LEFT: 'left',
+                    K_DOWN: 'down',
+                    K_UP: 'up'
                 }
                 if event.type == KEYDOWN:
                     if event.key in events_direction.keys():
                         MG.move(events_direction[event.key])
             # End screens
             # Win screen
-            if MG.seringue:
+            if MG.syringe:
                 font.init()
                 my_font = font.Font(font.get_default_font(), 20)
                 scr = display.set_mode((screen_size, screen_size))
